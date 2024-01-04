@@ -26,7 +26,7 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
-        
+
         if($request->user()->role === 'admin'){
             return redirect()->intended(RouteServiceProvider::ADMIN);
         }
@@ -46,6 +46,9 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
+        if($request->user()->role === 'admin'){
+            return redirect()->route('admin.login');
+        }
         return redirect('/');
     }
 }
