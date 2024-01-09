@@ -26,35 +26,5 @@
                 </div>
             </div>
         </div>
-
-        <div class="card card-primary">
-
-            <div class="card-body">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Image</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($images as $image)
-                        <tr>
-                            <td><img width="150px" src="{{ asset($image->image) }}" alt=""></td>
-                            <td>
-                                <a href='{{ route('admin.product-gallery.destroy', $image->id) }}' class='btn btn-danger delete-item mx-2'><i class='fas fa-trash'></i></a>
-                            </td>
-                        </tr>
-                        @endforeach
-                        @if (count($images) === 0)
-                        <tr >
-                            <td colspan='2' class="text-center">No data found!</td>
-
-                        </tr>
-                        @endif
-                    </tbody>
-                </table>
-            </div>
-        </div>
     </section>
 @endsection
