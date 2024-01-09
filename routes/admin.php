@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductGalleryController;
+use App\Http\Controllers\Admin\ProductOptionController;
+use App\Http\Controllers\Admin\ProductSizeController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SliderController;
 
@@ -31,4 +33,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     /** Product Gallery Routes */
     Route::get('product-gallery/{product}', [ProductGalleryController::class, 'index'])->name('product-gallery.show-index');
     Route::resource('product-gallery', ProductGalleryController::class)->only(['store', 'destroy']);
+
+    /** Product Size Routes */
+    Route::get('product-size/{product}', [ProductSizeController::class, 'index'])->name('product-size.show-index');
+    Route::resource('product-size', ProductSizeController::class)->only(['store', 'destroy']);
+    /** Product Size Routes */
+    Route::resource('product-option', ProductOptionController::class);
 });
