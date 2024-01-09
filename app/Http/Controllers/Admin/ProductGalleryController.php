@@ -16,7 +16,9 @@ class ProductGalleryController extends Controller
 
     public function index(string $productId) : View
     {
-        return view('admin.product.gallery.index', compact('productId'));
+        $images = ProductGallery::where('product_id', $productId)->get();
+
+        return view('admin.product.gallery.index', compact('productId', 'images'));
     }
 
     public function store(ProductGalleryStoreRequest $request) : RedirectResponse
