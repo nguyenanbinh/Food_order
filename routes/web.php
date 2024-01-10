@@ -36,5 +36,6 @@ Route::group(['middleware' => 'auth'], function(){
 
 
 require __DIR__.'/auth.php';
-
+/** Show Product details page */
+Route::get('/product/{slug}', [HomeController::class, 'showProduct'])->name('product.show');
 ;
